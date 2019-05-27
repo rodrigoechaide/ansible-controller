@@ -9,6 +9,7 @@
 #Matrix of ports to forward to the host machine [guest_port, host_port]
 ports = [ [5000,5000], [9060, 9060], [9080, 9080], [9090, 9090] ]
 vm_name = "ansible-mgmt"
+projects_dir = "~/Projects/"
 
 Vagrant.configure("2") do |config|
 
@@ -17,7 +18,7 @@ Vagrant.configure("2") do |config|
     ports.each do |item|
         config.vm.network :forwarded_port, guest: item[0], host: item[1]
     end
-    config.vm.synced_folder "/home/rodrigo/Projects/", "/Projects"
+    config.vm.synced_folder projects_dir, "/Projects"
     config.vm.provider "virtualbox" do |vb|
         vb.name = vm_name
         #vb.gui = true
