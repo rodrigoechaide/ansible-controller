@@ -8,10 +8,6 @@ RUN apt-get update && apt-get -y install \
 	sshpass \
 	&& apt-get clean \
 	&& curl -s "https://bootstrap.pypa.io/get-pip.py" | python3 \
-	&& pip3 install ansible
+	&& pip3 install ansible==2.8.0
 
-WORKDIR ["/ansible"]
-
-ENTRYPOINT ["ansible-playbook"]
-
-CMD ["-h"]
+WORKDIR /ansible
