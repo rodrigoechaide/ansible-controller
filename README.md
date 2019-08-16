@@ -3,7 +3,7 @@
 Vagrant and Docker project to deploy and configure an Ansible Controller Server. In order to change Ansible version move to a specific tag with the desired Ansible version.
 
 
-# Running with Vagrant
+## Running with Vagrant
 
 Modify `projects_dir` variable in **Vagrantfile** to specify an absolute path to the folder where ansible projects are stored and mantained. That directory is then mounted into `/Projects` directory inside the Virtual Machine.
 
@@ -33,21 +33,21 @@ Then run the following commands:
 	vagrant destroy
 	```
 
-# Running with Docker
+## Running with Docker
 
-## Pull docker image from DockerHub
+### Pull docker image from DockerHub
 
 ```
 docker pull rodrigoechaide/ansible-controller
 ```
 
-## Tag the image in order to make the name shorter
+### Tag the image in order to make the name shorter
 
 ```
 docker tag rodrigoechaide/ansible-controller:latest ansible-controller:latest
 ```
 
-## Option 1:
+### Option 1:
 
 * Log into the container and run ansible-playbook inside it
 
@@ -57,7 +57,7 @@ docker tag rodrigoechaide/ansible-controller:latest ansible-controller:latest
 
 Note: Before running the container you have to move to the directory where the deploy scripts are placed and with `$(pwd)` variable that directory is then mounted into `/ansible` directory inside the container.
 
-## Option 2:
+### Option 2:
 
 * Run container as an excecutable
 
