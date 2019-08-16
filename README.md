@@ -55,7 +55,7 @@ docker tag rodrigoechaide/ansible-controller:latest ansible-controller:latest
     docker run -it --name ansible-controller -v $(pwd):/ansible ansible-controller
     ```
 
-    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into `/ansible` directory inside the container
+Note: Before running the container you have to move to the directory where the deploy scripts are placed and with `$(pwd)` variable that directory is then mounted into `/ansible` directory inside the container.
 
 ## Option 2:
 
@@ -73,5 +73,5 @@ docker tag rodrigoechaide/ansible-controller:latest ansible-controller:latest
         docker run -v "$(pwd)":/ansible --entrypoint "ansible" ansible-controller -m setup -i [inventory_file]
         ```
     
-    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into `/ansible` directory inside the container
+Note: Before running the container you have to move to the directory where the deploy scripts are placed and with `$(pwd)` variable that directory is then mounted into `/ansible` directory inside the container.
     
