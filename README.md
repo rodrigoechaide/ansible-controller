@@ -1,39 +1,72 @@
 # Ansible Controller with Python3 support
 
-Vagrant and Docker project to configure a ansible management server. In order to change ansible version move to a specific tag with the desired ansible version.
+Vagrant and Docker project to deploy and configure an Ansible Controller Server. In order to change ansible version move to a specific tag with the desired Ansible version.
 
 
 # Running with Vagrant
 
-```
-vagrant up
-```
-```
-vagrant ssh
-```
+Modify `projects_dir` variable specifiying a relative or absolute path to the folder where ansible projects are stored and mantained. 
+
+Then run the following commands:
+
+* Start Ansible Controller Virtual Machine:
+
+	```
+	vagrant up
+	```
+
+* Log in through ssh to the Ansible Controller Virtual Machine:
+
+	```
+	vagrant ssh
+	```
+
+* Gracefullty shutdown Ansible Controller Virtual Machine:
+
+	```
+	vagrant halt
+	```
+
+* Destroy Ansible Controller Virtual Machine:
+
+	```
+	vagrant destroy
+	```
 
 # Running with Docker
 
 ## Pull docker image from Nexus
 
 ```
-docker pull registry-dev.ascentio.com.ar/ansible-management
+docker pull registry-dev.ascentio.com.ar/ansible-controller
 ```
 
-## Log in to the container and run ansible-playbook inside the container
+## Tag the image in order to make the name shorter
 
 ```
-docker run -it --name ansible-management -v $(pwd):/ansible registry-dev.ascentio.com.ar/ansible-management
+docker tag registry-dev.ascentio.com.ar/ansible-controller:latest ansible-controller:latest
 ```
 
-Where $(pwd) is the path where the deploy scripts are placed, which are mounted into /ansible directory in the container
+## Option 1:
 
-## Run container as an excecutable
+* Log in to the container and run ansible-playbook inside the container
 
-```
-docker run -v "$(pwd)":/ansible --entrypoint "ansible-playbook" ansible-management [playbook-example.yml] -i [inventory_file]
-```
+    ```
+    docker run -it --name ansible-management -v $(pwd):/ansible ansible-controller
+    ```
 
-```
-docker run -v "$(pwd)":/ansible --entrypoint "ansible" ansible-management -m setup -i [inventory_file]
-```
+    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into /ansible directory inside the container
+
+## Option 2:
+
+* Run container as an excecutable
+
+    ```
+    docker run -v "$(pwd)":/ansible --entrypoint "ansible-playbook" ansible-controller [playbook-example.yml] -i [inventory_file]
+    ```
+    
+    ```
+    docker run -v "$(pwd)":/ansible --entrypoint "ansible" ansible-controller -m setup -i [inventory_file]
+    ```
+    
+    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into /ansible directory inside the container
