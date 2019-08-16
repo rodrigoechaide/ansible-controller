@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Rodrigo Echaide"
 
-RUN apt-get update && apt-get -y install \
+RUN apt-get update && apt-get -y install --no-install-recommends \
 	curl \
 	python3-distutils \
 	sshpass \
