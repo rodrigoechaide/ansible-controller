@@ -35,16 +35,16 @@ Then run the following commands:
 
 # Running with Docker
 
-## Pull docker image from Nexus
+## Pull docker image from DockerHub
 
 ```
-docker pull registry-dev.ascentio.com.ar/ansible-controller
+docker pull rodrigoechaide/ansible-controller
 ```
 
 ## Tag the image in order to make the name shorter
 
 ```
-docker tag registry-dev.ascentio.com.ar/ansible-controller:latest ansible-controller:latest
+docker tag rodrigoechaide/ansible-controller:latest ansible-controller:latest
 ```
 
 ## Option 1:
@@ -52,7 +52,7 @@ docker tag registry-dev.ascentio.com.ar/ansible-controller:latest ansible-contro
 * Log into the container and run ansible-playbook inside it
 
     ```
-    docker run -it --name ansible-management -v $(pwd):/ansible ansible-controller
+    docker run -it --name ansible-controller -v $(pwd):/ansible ansible-controller
     ```
 
     Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into `/ansible` directory inside the container
