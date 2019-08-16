@@ -5,7 +5,7 @@ Vagrant and Docker project to deploy and configure an Ansible Controller Server.
 
 # Running with Vagrant
 
-Modify `projects_dir` variable specifiying a relative or absolute path to the folder where ansible projects are stored and mantained. 
+Modify `projects_dir` variable specifiying an absolute path to the folder where ansible projects are stored and mantained. That directory is then mounted to the /Projects directory inside the Virtual Machine.
 
 Then run the following commands:
 
