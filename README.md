@@ -5,7 +5,7 @@ Vagrant and Docker project to deploy and configure an Ansible Controller Server.
 
 # Running with Vagrant
 
-Modify `projects_dir` variable specifiying an absolute path to the folder where ansible projects are stored and mantained. That directory is then mounted to the /Projects directory inside the Virtual Machine.
+Modify `projects_dir` variable in **Vagrantfile** to specify an absolute path to the folder where ansible projects are stored and mantained. That directory is then mounted into `/Projects` directory inside the Virtual Machine.
 
 Then run the following commands:
 
@@ -49,24 +49,29 @@ docker tag registry-dev.ascentio.com.ar/ansible-controller:latest ansible-contro
 
 ## Option 1:
 
-* Log in to the container and run ansible-playbook inside the container
+* Log into the container and run ansible-playbook inside it
 
     ```
     docker run -it --name ansible-management -v $(pwd):/ansible ansible-controller
     ```
 
-    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into /ansible directory inside the container
+    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into `/ansible` directory inside the container
 
 ## Option 2:
 
 * Run container as an excecutable
 
-    ```
-    docker run -v "$(pwd)":/ansible --entrypoint "ansible-playbook" ansible-controller [playbook-example.yml] -i [inventory_file]
-    ```
+    * **ansible-playbook** entrypoint:
     
-    ```
-    docker run -v "$(pwd)":/ansible --entrypoint "ansible" ansible-controller -m setup -i [inventory_file]
-    ```
+        ```
+        docker run -v "$(pwd)":/ansible --entrypoint "ansible-playbook" ansible-controller [playbook-example.yml] -i [inventory_file]
+        ```
     
-    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into /ansible directory inside the container
+    * **ansible** entrypoint:
+    
+        ```
+        docker run -v "$(pwd)":/ansible --entrypoint "ansible" ansible-controller -m setup -i [inventory_file]
+        ```
+    
+    Where `$(pwd)` is the path where the deploy scripts are placed, which are mounted into `/ansible` directory inside the container
+    
