@@ -1,4 +1,4 @@
-# Ansible Controller with Python3 support
+# Ansible Controller with Python 3 support
 
 Vagrant and Docker project to deploy and configure an Ansible Controller Server. In order to change Ansible version move to a specific tag with the desired Ansible version.
 
