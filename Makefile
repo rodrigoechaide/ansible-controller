@@ -1,8 +1,8 @@
 lint-dockerfile:
-  @echo "linting Dockerfile"
+	@echo "linting Dockerfile"
   
 build-image:
-  @echo "Building Docker Image"
+	@echo "Building Docker Image"
   
 push-image:
-  @echo "Pushing Docker image"
+	@echo "Pushing Docker image"
